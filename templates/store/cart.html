@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-2xl font-bold mb-4">Shopping Cart</h1>
+{% if items %}
+<table class="min-w-full bg-white">
+    <thead>
+        <tr><th class="px-2">Cloth</th><th>Qty (m)</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td class="border px-2">{{ item.cloth.name }}</td>
+            <td class="border px-2">{{ item.qty }}</td>
+            <td class="border px-2">${{ item.cloth.price|floatformat:2 }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<p class="mt-4 font-bold">Total: ${{ total|floatformat:2 }}</p>
+<a href="{% url 'send_quote' %}" class="bg-green-600 text-white px-4 py-2 mt-2 inline-block">Quote</a>
+{% else %}
+<p>Your cart is empty.</p>
+{% endif %}
+{% endblock %}

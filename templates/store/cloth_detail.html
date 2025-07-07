@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="bg-white p-4">
+    <img src="{{ cloth.image_url }}" alt="{{ cloth.name }}" class="w-full h-64 object-cover mb-4">
+    <h2 class="text-xl font-bold">{{ cloth.name }}</h2>
+    <p>{{ cloth.description }}</p>
+    <p class="font-bold mb-2">${{ cloth.price }} per meter</p>
+    <form action="{% url 'add_to_cart' cloth.id %}" method="post" class="mt-2">
+        {% csrf_token %}
+        <label>Quantity (meters):</label>
+        <input type="number" name="quantity" value="1" min="0.1" step="0.1" class="border">
+        <button type="submit" class="bg-blue-600 text-white px-2 py-1">Add to cart</button>
+    </form>
+</div>
+{% endblock %}
