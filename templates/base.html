@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cloth Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* simple side scrolling news bar */
+        .news-scroll {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .news-scroll span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: scroll-left 15s linear infinite;
+        }
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+<nav class="bg-blue-800 p-4 text-white">
+    <a href="/" class="mr-4">Home</a>
+    <a href="/cart/" class="mr-4">Cart</a>
+</nav>
+<div class="news-scroll bg-yellow-300 text-black p-2">
+    <span>Latest news and promotions! Visit our store for more offers. </span>
+</div>
+<div class="container mx-auto p-4">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
